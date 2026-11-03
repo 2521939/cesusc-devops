@@ -1,4 +1,3 @@
-require('chromedriver');
 const { Builder, By } = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 const server = require('../src/app');
