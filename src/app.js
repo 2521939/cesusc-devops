@@ -7,6 +7,8 @@ app.get('/index', (req, res) => {
     res.sendFile('views/index.html', { root: __dirname });
 });
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
+
+module.exports = server;
