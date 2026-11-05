@@ -1,0 +1,33 @@
+{
+  "name": "cesusc-devops",
+  "version": "1.0.0",
+  "description": "devops terceiro semestre ads",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "lint": "eslint src/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2521939/cesusc-devops.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/2521939/cesusc-devops/issues"
+  },
+  "homepage": "https://github.com/2521939/cesusc-devops#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "chromedriver": "^148.0.4",
+    "eslint": "^10.14.0",
+    "globals": "^17.14.0",
+    "jest": "^30.5.2",
+    "selenium-webdriver": "^4.51.0"
+  }
+}
