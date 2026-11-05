@@ -4,7 +4,6 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "develop" ]
 
@@ -13,23 +12,19 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v2
         with:
           node-version: '20'
 
-      
       - name: Install dependencies
         run: npm install
-      
+
       - name: Install chrome
         run: |
           sudo apt update && sudo apt install curl -y
@@ -37,9 +32,16 @@ jobs:
             -o /tmp/google-chrome-stable_current_amd64.deb
           sudo DEBIAN_FRONTEND=noninteractive \
             apt install /tmp/google-chrome-stable_current_amd64.deb -y --allow-downgrades
-      
+
       - name: Run ESLint
         run: npm run lint
 
       - name: Run Jest
         run: npm test
+
+      - name: Merge develop into main
+        uses: everlytic/branch-merge@1.1.5
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          source_branch: 'develop'
+          target_branch: 'main'
